@@ -68,7 +68,7 @@ let btn = document.getElementById("saveBtn")
                 <span>${todo.text}</span>
                 </div>
                 <div class="col">
-                <button class="btn"><i class="fa fa-close"></i></button>
+                
                 </div>
             </div>
             </div>
