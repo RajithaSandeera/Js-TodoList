@@ -17,11 +17,32 @@ addTodoList =(text)=>{
 
 }
 
+if (arrayIsEmpty(todoItems)){
+
+    console.log("empty");
+    
+
+    // let popup =  document.getElementById("warningStyle");
+    // popup.classList.add("warningStyle");
+
+    const list = document.getElementById("idWarning").classList;
+    list.add("warningStyleShow");
+    
+    
+
+}else{
+
+    popup.classList.remove("warningStyleShow");
+    document.getElementById("idWarning").style.visibility = "hidden";
+}
+
 let btn = document.getElementById("saveBtn")
  btn.addEventListener('click', show=>{
 
-  
+ 
+    
 
+  
     show.preventDefault();
 
     const inputField = document.getElementById("todoId");
@@ -35,7 +56,7 @@ let btn = document.getElementById("saveBtn")
         inputField.value = "";
         inputField.focus();
     }
-    inputField.value = "";
+   
  })
 
 
@@ -54,10 +75,7 @@ let btn = document.getElementById("saveBtn")
 
         x.innerHTML =
         `
-        
-       
-        
-      
+    
             <div class="container">
             <div class="row">
                 <div class="js-tick col" id="myList">
@@ -75,10 +93,6 @@ let btn = document.getElementById("saveBtn")
                 
         `;
     
-
-
-        const Ticklist = document.querySelector('#myList');
-    
             
             x.addEventListener('click', event => {
              
@@ -87,10 +101,13 @@ let btn = document.getElementById("saveBtn")
 
                     x.style.textDecoration = "line-through"
                     todo.checked = true;
+                    $message.info("You Successfully completed that Task");
                 }
                 else{
 
                     x.style.textDecoration = "none" 
+                    todo.checked = false;
+                   
                 }
                
           
@@ -99,21 +116,46 @@ let btn = document.getElementById("saveBtn")
          
         })
 
-            
-        x.addEventListener('dblclick', event => {
-            console.log("prevoius trick works");
+            let removeBtn = document.getElementById("cct")   
+            removeBtn.addEventListener('click', event => {
+                if(todo.checked == true){
 
-        
-            if(todo.checked == true){
-
-                addList.removeChild(x)
-            }
+                    addList.removeChild(x)
+                  
+                    $message.success('Selected Tasked Cleared');
+                }
             
                 
     })
+    document.getElementById("idWarning").style.visibility = "hidden";
+
+            let removeAllBtn = document.getElementById("cat")   
+            const Ticklist = document.querySelector('#myList');
+            removeAllBtn.addEventListener('click', event => {
+            console.log("prevoius trick works");
+
+                addList.removeChild(x)
+                document.getElementById("idWarning").style.visibility = "visible";
+                $message.success('All Tasks Cleared');
+                  
+                  
+        
+        
+           
+})
+}
 
 
-
-
-
+function arrayIsEmpty(array) {
+    //If it's not an array, return FALSE.
+    if (!Array.isArray(array)) {
+        return FALSE;
+    }
+    //If it is an array, check its length property
+    if (array.length == 0) {
+        //Return TRUE if the array is empty
+        return true;
+    }
+    //Otherwise, return FALSE.
+    return false;
 }
