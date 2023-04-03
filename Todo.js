@@ -61,14 +61,14 @@ let btn = document.getElementById("saveBtn")
             <div class="container">
             <div class="row">
                 <div class="js-tick col" id="myList">
-             
+                <input id="${todo.id}" type="checkbox"/>
                 </div>
                 <div class="col-6">
                 <label for="${todo.id}" class="js-tick"></label>
                 <span>${todo.text}</span>
                 </div>
                 <div class="col">
-                
+                <button class="btn"><i class="fa fa-close"></i></button>
                 </div>
             </div>
             </div>
@@ -82,7 +82,18 @@ let btn = document.getElementById("saveBtn")
             
             x.addEventListener('click', event => {
              
-                x.style.textDecoration = "line-through";
+            
+                if(x.style.textDecoration != "line-through"){
+
+                    x.style.textDecoration = "line-through"
+                    todo.checked = true;
+                }
+                else{
+
+                    x.style.textDecoration = "none" 
+                }
+               
+          
                 
 
          
@@ -92,13 +103,17 @@ let btn = document.getElementById("saveBtn")
         x.addEventListener('dblclick', event => {
             console.log("prevoius trick works");
 
-            if(x.style.textDecoration="line-through"){
+        
+            if(todo.checked == true){
 
                 addList.removeChild(x)
             }
             
                 
     })
+
+
+
 
 
 }
