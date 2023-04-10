@@ -13,6 +13,10 @@
 - Boostrap 5
 - Html 5
 
+## .How to Use
+- npm install
+- npm run dev
+
 ## .contact
 
 - Email: Rajithasck@gmail.com
